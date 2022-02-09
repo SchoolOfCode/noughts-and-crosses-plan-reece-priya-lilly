@@ -6,7 +6,12 @@ function Board(props) {
   return (
     <div>
       {board.map((square, index) => (
-        <Square square={square} key={index} makeAMove={makeAMove} />
+        <Square
+          square={square}
+          index={index}
+          makeAMove={makeAMove}
+          key={index}
+        />
       ))}
     </div>
   );

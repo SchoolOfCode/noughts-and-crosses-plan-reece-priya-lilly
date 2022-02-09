@@ -1,3 +1,4 @@
+import { replace } from "lodash";
 import { useState } from "react";
 import Board from "../Board";
 
@@ -12,8 +13,26 @@ function Game() {
   //Take in a ID, update the board respective of the ID, with
   //the symbol.
 
-  function makeAMove() {
-    console.log("I HAVE BEEN CLICKED! :)");
+  function makeAMove(id) {
+    if (isTaken(id, board) === false) {
+      if (isPlayerOneTurn) {
+        setPlayerOneTurn(!isPlayerOneTurn);
+        return setBoard(replaceItem(board, "X", id));
+      }
+      setPlayerOneTurn(!isPlayerOneTurn);
+      return setBoard(replaceItem(board, "O", id));
+    }
+  }
+
+  function replaceItem(array, item, index) {
+    return [...array.slice(0, index - 1), item, ...array.slice(index)];
+  }
+
+  function isTaken(id, board) {
+    if (board[id] === null) {
+      return false;
+    }
+    return true;
   }
 
   return (
