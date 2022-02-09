@@ -1,0 +1,9 @@
+.board{
+    display : flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: pink;
+    flex-wrap: wrap;
+    width: 300px;
+    }
+

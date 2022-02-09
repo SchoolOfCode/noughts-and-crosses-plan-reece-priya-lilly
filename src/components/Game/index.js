@@ -14,18 +14,23 @@ function Game() {
   //the symbol.
 
   function makeAMove(id) {
+    console.log(id);
     if (isTaken(id, board) === false) {
       if (isPlayerOneTurn) {
         setPlayerOneTurn(!isPlayerOneTurn);
-        return setBoard(replaceItem(board, "X", id));
+        setBoard(replaceItem(board, "X", id));
+        checkWinner(board, "X");
+        return;
       }
       setPlayerOneTurn(!isPlayerOneTurn);
-      return setBoard(replaceItem(board, "O", id));
+      setBoard(replaceItem(board, "O", id));
+      checkWinner(board, "O");
+      return;
     }
   }
 
   function replaceItem(array, item, index) {
-    return [...array.slice(0, index - 1), item, ...array.slice(index)];
+    return [...array.slice(0, index), item, ...array.slice(index + 1)];
   }
 
   function isTaken(id, board) {
@@ -33,6 +38,20 @@ function Game() {
       return false;
     }
     return true;
+  }
+
+  function checkWinner(board, symbol) {
+    if (
+      (board[0] === symbol && board[1] === symbol && board[2] === symbol) ||
+      (board[3] === symbol && board[4] === symbol && board[5] === symbol) ||
+      (board[6] === symbol && board[7] === symbol && board[8] === symbol) ||
+      (board[0] === symbol && board[3] === symbol && board[6] === symbol) ||
+      (board[1] === symbol && board[4] === symbol && board[7] === symbol) ||
+      (board[2] === symbol && board[5] === symbol && board[8] === symbol)
+    ) {
+      console.log(symbol + "Wins!");
+      return true;
+    }
   }
 
   return (
