@@ -1,12 +1,65 @@
-.square{
-    width: 50px;
-    height:  50px;
-    background-color: antiquewhite;
-    margin: 20px;
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+.X{
+    width: 150px;
+    height:  150px;
+    margin: 10px;
     grid-area: auto;
-    border: black solid 2px;
+    border-radius: 20px;
+    font-size: 5rem;
+    text-align: center;
+    user-select: none;
+    font-family: 'Itim', cursive;
+}
+.Y{
+    width: 150px;
+    height:  150px;
+    margin: 10px;
+    grid-area: auto;
+    border-radius: 20px;
+    font-size: 5rem;
+    text-align: center;
+    user-select: none;
+    font-family: 'Itim', cursive;
 }
 
-.square:hover {
-    background-color: rgb(255, 199, 125);
+.X:hover {
+    animation-name: xhover;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+}
+.Y:hover {
+    animation-name: yhover;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes xhover {
+    from {}
+    to{background-color: rgb(176, 194, 255)};
+}
+
+@keyframes yhover {
+    from {}
+    to{    background-color: rgb(160, 255, 151)};
+}
+
+#normal{
+    background-color: antiquewhite;
+    color: black;
+    border: black solid 3px;
+
+}
+
+#alt{
+    background-color: rgb(44, 44, 44);
+    color: white;
+    border: rgb(248, 248, 248) solid 3px;
+
+}
+
+.letter{
+    position: relative;
+    bottom: 25px;
 }

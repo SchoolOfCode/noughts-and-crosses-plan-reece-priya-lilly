@@ -1,5 +1,11 @@
-function SubHeading({ winner }) {
-  return <h1>{winner}</h1>;
+import styles from "./SubHeading.module.css";
+
+function SubHeading({ winner, darkToggle }) {
+  return (
+    <div id={darkToggle ? styles.normal : styles.alt}>
+      {winner ? <h1>{winner} Wins!</h1> : null}
+    </div>
+  );
 }
 
 export default SubHeading;

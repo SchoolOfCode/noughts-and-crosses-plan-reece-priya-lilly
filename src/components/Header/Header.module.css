@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: center;
+    text-shadow: 5px 5px rgba(110, 110, 212, 0.377);
+    font-size: 4rem;
+}
+
+#headeralt{
+    color: rgb(255, 255, 255);
+}
+
+#headernormal {
+    color: rgb(0, 0, 0);
+}

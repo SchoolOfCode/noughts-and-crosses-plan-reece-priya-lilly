@@ -1,0 +1,21 @@
+.container{
+    white-space: nowrap;
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 10vw;
+    position: relative;
+    font-size: 10rem;
+    z-index: auto;
+    user-select: none;
+    transform: translateY(-300%)
+}
+
+#containernormal{
+    color: rgb(0, 0, 0);
+}
+
+#containeralt{
+    color: white;
+}

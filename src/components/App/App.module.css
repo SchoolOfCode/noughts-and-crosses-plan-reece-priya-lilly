@@ -1,0 +1,12 @@
+.normal {
+    background-color: rgb(255, 237, 133);
+}
+
+.alt{
+    background-color: rgb(26, 26, 26);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}

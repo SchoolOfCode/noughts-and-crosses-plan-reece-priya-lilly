@@ -2,8 +2,20 @@
     display : flex;
     justify-content: center;
     flex-direction: row;
-    background-color: pink;
     flex-wrap: wrap;
-    width: 300px;
+    width: 600px;
+    border-radius: 30px 50px;
+    z-index: 1;
     }
 
+    #boardnormal{
+        border: solid black 10px;
+        background-color: rgb(255, 253, 124);
+
+    }
+
+    #boardalt{
+        border: solid rgb(255, 255, 255) 10px;
+        background-color: rgb(77, 77, 77);
+
+    }

@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import Board from "../Board";
 import SubHeading from "../SubHeading";
+import styles from "./Game.module.css";
+import Stats from "../Stats";
+import "../../index.css";
 
-function Game() {
+function Game({ darkToggle }) {
   const intitialState = [null, null, null, null, null, null, null, null, null];
-
   const [board, setBoard] = useState(intitialState);
   const [isPlayerOneTurn, setPlayerOneTurn] = useState(true);
+  const [winner, setWinner] = useState("");
+  const [playerOneWins, setPlayerOneWins] = useState(0);
+  const [playerTwoWins, setPlayerTwoWins] = useState(0);
+  const [draw, setDraw] = useState(0);
 
   //Make a move function
   //If it player one turn is ture we put a nought, else cross.
@@ -14,8 +20,7 @@ function Game() {
   //the symbol.
 
   function makeAMove(id) {
-    if (isTaken(id, board) === false) {
-      console.log(isPlayerOneTurn);
+    if (isTaken(id, board) === false && winner === "") {
       if (isPlayerOneTurn) {
         setPlayerOneTurn(!isPlayerOneTurn);
         setBoard(replaceItem(board, "X", id));
@@ -39,41 +44,78 @@ function Game() {
   }
 
   function checkWinner(board, isPlayerOneTurn) {
-    console.log("Check winner function fired!");
     if (
       (board[0] && board[0] === board[1] && board[0] === board[2]) ||
       (board[3] && board[3] === board[4] && board[3] === board[5]) ||
       (board[6] && board[6] === board[7] && board[6] === board[8]) ||
       (board[0] && board[0] === board[3] && board[0] === board[6]) ||
       (board[1] && board[1] === board[4] && board[1] === board[7]) ||
-      (board[2] && board[2] === board[6] && board[3] === board[9]) ||
+      (board[2] && board[2] === board[5] && board[2] === board[8]) ||
       (board[0] && board[0] === board[4] && board[0] === board[8]) ||
       (board[2] && board[2] === board[4] && board[2] === board[6])
     ) {
-      console.log("Winenr check!");
       if (!isPlayerOneTurn) {
-        return console.log("X wins");
+        setWinner("Player 1 (X)");
+        setPlayerOneWins(playerOneWins + 1);
+        console.log(playerOneWins);
+        return;
       }
-      return console.log("O wins!");
+      setWinner("Player 2 (O)");
+      setPlayerTwoWins(playerTwoWins + 1);
+
+      return;
     }
-    return;
+    if (board.every(checkDraw)) {
+      setWinner("Game is a draw! Nobody");
+    }
+  }
+  function resetGame() {
+    setBoard(intitialState);
+    setWinner("");
+    setPlayerOneTurn(true);
   }
 
   useEffect(() => {
     checkWinner(board, isPlayerOneTurn);
     //eslint-disable-next-line
   }, [board]);
-  //   (board[0] === symbol && board[1] === symbol && board[2] === symbol) ||
-  //   (board[3] === symbol && board[4] === symbol && board[5] === symbol) ||
-  //   (board[6] === symbol && board[7] === symbol && board[8] === symbol) ||
-  //   (board[0] === symbol && board[3] === symbol && board[6] === symbol) ||
-  //   (board[1] === symbol && board[4] === symbol && board[7] === symbol) ||
-  //   (board[2] === symbol && board[5] === symbol && board[8] === symbol)
+
+  function resetScores() {
+    setPlayerOneWins(0);
+    setPlayerTwoWins(0);
+    setDraw(0);
+  }
+
+  function checkDraw(e) {
+    return e !== null;
+  }
 
   return (
     <div>
-      <Board board={board} makeAMove={makeAMove} />
-      <SubHeading winner />
+      <div
+        className={styles.board}
+        id={darkToggle ? styles.boardnormal : styles.boardalt}
+      >
+        <Board
+          board={board}
+          makeAMove={makeAMove}
+          isPlayerOneTurn={isPlayerOneTurn}
+          darkToggle={darkToggle}
+        />
+      </div>
+      <div className={styles.heading}>
+        <SubHeading winner={winner} darkToggle={darkToggle} />
+        {winner ? <button onClick={resetGame}>Play again?</button> : null}
+        {playerOneWins > 0 || playerTwoWins > 0 ? (
+          <button onClick={resetScores}>Reset Scores</button>
+        ) : null}
+      </div>
+      <Stats
+        playerOneWins={playerOneWins}
+        playerTwoWins={playerTwoWins}
+        draw={draw}
+        darkToggle={darkToggle}
+      />
     </div>
   );
 }

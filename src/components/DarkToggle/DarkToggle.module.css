@@ -1,0 +1,58 @@
+.container{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+.togglebase{
+    width: 55px;
+    height: 30px;
+    background-color: white;
+    border: solid black 3px;
+}
+
+.toggleswitch{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+
+}
+
+#toggleswitchnormal{
+    animation-name: lighttodark;
+    animation-duration: .5s;
+    border: solid rgb(182, 182, 182) 2px;
+    background-color: rgb(31, 31, 31);
+    animation-fill-mode: forwards;
+    bottom: 7px;
+}
+
+
+#toggleswitchalt{
+    animation-name: darktolight;
+    animation-duration: .5s;
+    border: solid rgb(255, 255, 255) 2px;
+    background-color: rgb(255, 232, 26);
+    animation-fill-mode: forwards;
+    bottom: 7px;
+    left: 10px;
+
+}
+
+@keyframes lighttodark {
+    from {
+    }
+    to{
+        transform: translateX(50%);
+    }
+}
+
+@keyframes darktolight {
+    from {
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+
+
