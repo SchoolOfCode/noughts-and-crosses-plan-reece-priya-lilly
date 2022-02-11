@@ -12,7 +12,6 @@ function Game({ darkToggle }) {
   const [winner, setWinner] = useState("");
   const [playerOneWins, setPlayerOneWins] = useState(0);
   const [playerTwoWins, setPlayerTwoWins] = useState(0);
-  const [draw, setDraw] = useState(0);
 
   //Make a move function
   //If it player one turn is ture we put a nought, else cross.
@@ -57,16 +56,19 @@ function Game({ darkToggle }) {
       if (!isPlayerOneTurn) {
         setWinner("Player 1 (X)");
         setPlayerOneWins(playerOneWins + 1);
+        setPlayerOneTurn(!isPlayerOneTurn);
         console.log(playerOneWins);
         return;
       }
       setWinner("Player 2 (O)");
       setPlayerTwoWins(playerTwoWins + 1);
+      setPlayerOneTurn(!isPlayerOneTurn);
 
       return;
     }
     if (board.every(checkDraw)) {
       setWinner("Game is a draw! Nobody");
+      setPlayerOneTurn(!isPlayerOneTurn);
     }
   }
   function resetGame() {
@@ -83,7 +85,6 @@ function Game({ darkToggle }) {
   function resetScores() {
     setPlayerOneWins(0);
     setPlayerTwoWins(0);
-    setDraw(0);
   }
 
   function checkDraw(e) {
@@ -96,26 +97,35 @@ function Game({ darkToggle }) {
         className={styles.board}
         id={darkToggle ? styles.boardnormal : styles.boardalt}
       >
-        <Board
-          board={board}
-          makeAMove={makeAMove}
-          isPlayerOneTurn={isPlayerOneTurn}
+        <Stats
+          playerOneWins={playerOneWins}
+          playerTwoWins={playerTwoWins}
           darkToggle={darkToggle}
         />
+        <div className={styles.grid}>
+          <Board
+            board={board}
+            makeAMove={makeAMove}
+            isPlayerOneTurn={isPlayerOneTurn}
+            darkToggle={darkToggle}
+          />
+        </div>
       </div>
       <div className={styles.heading}>
         <SubHeading winner={winner} darkToggle={darkToggle} />
-        {winner ? <button onClick={resetGame}>Play again?</button> : null}
-        {playerOneWins > 0 || playerTwoWins > 0 ? (
-          <button onClick={resetScores}>Reset Scores</button>
-        ) : null}
+        <div className={styles.buttonscontainer}>
+          {winner ? (
+            <button onClick={resetGame} className={styles.buttons}>
+              Play again?
+            </button>
+          ) : null}
+          {playerOneWins > 0 || playerTwoWins > 0 ? (
+            <button onClick={resetScores} className={styles.buttons}>
+              Reset Scores
+            </button>
+          ) : null}
+        </div>
       </div>
-      <Stats
-        playerOneWins={playerOneWins}
-        playerTwoWins={playerTwoWins}
-        draw={draw}
-        darkToggle={darkToggle}
-      />
     </div>
   );
 }

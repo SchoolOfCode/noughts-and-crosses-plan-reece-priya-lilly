@@ -8,6 +8,7 @@
     height: 30px;
     background-color: white;
     border: solid black 3px;
+    cursor: pointer;
 }
 
 .toggleswitch{
@@ -22,7 +23,7 @@
     animation-name: lighttodark;
     animation-duration: .5s;
     border: solid rgb(182, 182, 182) 2px;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(129, 129, 129);
     animation-fill-mode: forwards;
     bottom: 7px;
 }
@@ -43,7 +44,7 @@
     from {
     }
     to{
-        transform: translateX(50%);
+        transform: translateX(55%);
     }
 }
 
@@ -56,3 +57,10 @@
 }
 
 
+.symbol{
+    font-size: 2rem;
+    position: inherit;
+    left: 4px;
+    top: -2px;
+    user-select: none;
+}

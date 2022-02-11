@@ -1,6 +1,8 @@
 .board {
     display: flex;
     justify-content: center;
+    margin: 100px;
+    padding-bottom: 25vw;
 }
 
 #boardnormal {
@@ -19,4 +21,23 @@
 .heading{
     display: flex;
     justify-content: center;
+}
+
+.grid{
+    position: absolute;
+}
+
+.buttons{
+    background-color: yellow;
+    outline: 2px black solid;
+    margin-left: 300px;
+}
+
+.buttonscontainer{
+    outline: 5px solid red;
+    top: 80%;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
 }

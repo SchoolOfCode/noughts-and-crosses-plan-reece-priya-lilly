@@ -6,7 +6,7 @@ function Header({ darkToggle }) {
       className={styles.header}
       id={darkToggle ? styles.headernormal : styles.headeralt}
     >
-      O's and X's
+      Welcome to "Crosses and Noughts"!
     </h1>
   );
 }

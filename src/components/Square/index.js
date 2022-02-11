@@ -4,7 +4,9 @@ function Square(props) {
   const { square, makeAMove, index, isPlayerOneTurn, darkToggle } = props;
   return (
     <div
-      className={isPlayerOneTurn ? styles.X : styles.Y}
+      className={
+        square === null ? (isPlayerOneTurn ? styles.X : styles.Y) : styles.taken
+      }
       id={darkToggle ? styles.normal : styles.alt}
       onClick={() => {
         makeAMove(index);

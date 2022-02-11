@@ -7,7 +7,9 @@ function DarkToggle({ toggleDarkMode, darkToggle }) {
         <div
           className={styles.toggleswitch}
           id={darkToggle ? styles.toggleswitchnormal : styles.toggleswitchalt}
-        ></div>
+        >
+          <div className={styles.symbol}>{darkToggle ? "🌚" : "🌞"}</div>
+        </div>
       </div>
     </div>
   );

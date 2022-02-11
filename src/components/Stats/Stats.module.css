@@ -1,15 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
 .container{
-    white-space: nowrap;
-    display: flex;
-    list-style-type: none;
-    justify-content: space-between;
-    padding: 20px;
-    margin: 10vw;
-    position: relative;
-    font-size: 10rem;
-    z-index: auto;
-    user-select: none;
-    transform: translateY(-300%)
+font-size: 10rem;
+list-style-type: none;
+position: absolute;
+display: flex;
+justify-content: space-around;
+padding: 5%;
+
 }
 
 #containernormal{
@@ -18,4 +16,37 @@
 
 #containeralt{
     color: white;
+}
+
+
+.statcontainer{
+outline: 100px rgb(255, 0, 43);
+height: 50vh;
+width: 100vw;
+position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.statone{
+    position: inherit;
+    left: -300%;
+    font-family: 'Itim', cursive;
+
+}
+
+.stattwo{
+    position: inherit;
+    left: 300%;
+    font-family: 'Itim', cursive;
+
+}
+
+@keyframes gotpoint{
+from{
+
+}
+to{
+    transform: translateY(150%);
+}
 }

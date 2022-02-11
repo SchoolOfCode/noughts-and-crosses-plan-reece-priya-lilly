@@ -11,8 +11,22 @@
     text-align: center;
     user-select: none;
     font-family: 'Itim', cursive;
+    cursor: pointer;
 }
 .Y{
+    width: 150px;
+    height:  150px;
+    margin: 10px;
+    grid-area: auto;
+    border-radius: 20px;
+    font-size: 5rem;
+    text-align: center;
+    user-select: none;
+    font-family: 'Itim', cursive;
+    cursor: pointer;
+
+}
+.taken{
     width: 150px;
     height:  150px;
     margin: 10px;
@@ -34,15 +48,43 @@
     animation-duration: .2s;
     animation-fill-mode: forwards;
 }
+.taken:hover {
+    animation-name: takenhover;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+}
+
+.X:hover::after{
+    content: "X";
+    color: rgba(0, 0, 0, 0.233);
+    font-family: 'Itim', cursive;
+    font-size: 11rem;
+    position: relative;
+    bottom: 25%;
+}
+
+.Y:hover::after{
+    content: "O";
+    color: rgba(0, 0, 0, 0.233);
+    font-family: 'Itim', cursive;
+    font-size: 11rem;
+    position: relative;
+    bottom: 25%;
+}
 
 @keyframes xhover {
     from {}
-    to{background-color: rgb(176, 194, 255)};
+    to{background-color: rgb(176, 194, 255);};
 }
 
 @keyframes yhover {
     from {}
-    to{    background-color: rgb(160, 255, 151)};
+    to{    background-color: rgb(160, 255, 151);
+}}
+
+@keyframes takenhover {
+    from {}
+    to{    background-color: rgb(255, 145, 145)};
 }
 
 #normal{
