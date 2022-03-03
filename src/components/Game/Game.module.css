@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .board {
     display: flex;
     justify-content: center;
@@ -28,16 +29,19 @@
 }
 
 .buttons{
-    background-color: yellow;
-    outline: 2px black solid;
-    margin-left: 300px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px 20px;
+    border: none;
+    font-family: 'Itim', cursive;
+    font-size: 3rem;
+    cursor: pointer;
 }
 
 .buttonscontainer{
-    outline: 5px solid red;
-    top: 80%;
     width: 100vw;
     position: absolute;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    bottom: 5%;
+
 }

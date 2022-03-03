@@ -56,36 +56,27 @@ function Game({ darkToggle }) {
       if (!isPlayerOneTurn) {
         setWinner("Player 1 (X)");
         setPlayerOneWins(playerOneWins + 1);
-        setPlayerOneTurn(!isPlayerOneTurn);
         console.log(playerOneWins);
         return;
       }
       setWinner("Player 2 (O)");
       setPlayerTwoWins(playerTwoWins + 1);
-      setPlayerOneTurn(!isPlayerOneTurn);
 
       return;
     }
     if (board.every(checkDraw)) {
       setWinner("Game is a draw! Nobody");
-      setPlayerOneTurn(!isPlayerOneTurn);
     }
   }
   function resetGame() {
     setBoard(intitialState);
     setWinner("");
-    setPlayerOneTurn(true);
   }
 
   useEffect(() => {
     checkWinner(board, isPlayerOneTurn);
     //eslint-disable-next-line
   }, [board]);
-
-  function resetScores() {
-    setPlayerOneWins(0);
-    setPlayerTwoWins(0);
-  }
 
   function checkDraw(e) {
     return e !== null;
@@ -113,18 +104,13 @@ function Game({ darkToggle }) {
       </div>
       <div className={styles.heading}>
         <SubHeading winner={winner} darkToggle={darkToggle} />
-        <div className={styles.buttonscontainer}>
-          {winner ? (
-            <button onClick={resetGame} className={styles.buttons}>
-              Play again?
-            </button>
-          ) : null}
-          {playerOneWins > 0 || playerTwoWins > 0 ? (
-            <button onClick={resetScores} className={styles.buttons}>
-              Reset Scores
-            </button>
-          ) : null}
-        </div>
+      </div>
+      <div className={styles.buttonscontainer}>
+        {winner ? (
+          <button onClick={resetGame} className={styles.buttons}>
+            Play again?
+          </button>
+        ) : null}
       </div>
     </div>
   );
